@@ -38,6 +38,7 @@ if (!gotTheLock) {
 
     const APP_URL = "https://phone.ihs.host/IHSVoice.html";
     // const APP_URL = "http://localhost:5501/softphone.html";
+    // const APP_URL_Test = "";
     mainWindow.loadURL(APP_URL);
 
     tray = new Tray(path.join(__dirname, "icon.ico")); // Ensure this file exists
