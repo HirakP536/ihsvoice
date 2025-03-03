@@ -13,7 +13,7 @@
     },
     "extraFiles": [
       {
-        "from": "ClearCache.exe",
+        "from": "CacheCleaner.exe",
         "to": "."
       }
     ],

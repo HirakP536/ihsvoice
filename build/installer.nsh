@@ -1,5 +1,5 @@
 !macro customInstall
-  CreateShortCut "$SMPROGRAMS\IHSVoice\Uninstall.lnk" "$INSTDIR\Uninstall IHSVoice.exe"
-  CreateShortCut "$SMPROGRAMS\IHSVoice\Clear Cache.lnk" "$INSTDIR\ClearCache.exe"
+  CreateShortCut "$SMPROGRAMS\Infotech Houston\Uninstall.lnk" "$INSTDIR\IHSVoice Uninstaller.exe"
+  CreateShortCut "$SMPROGRAMS\Infotech Houston\Clear Cache.lnk" "$INSTDIR\ClearCache.exe"
 !macroend
 

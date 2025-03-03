@@ -2,6 +2,7 @@ const { app, BrowserWindow, Menu, Tray, dialog, ipcMain } = require("electron");
 const AutoLaunch = require("electron-auto-launch");
 const path = require("path");
 const { autoUpdater } = require("electron-updater");
+const { shell } = require("electron");
 let alwaysOnTop = false;
 let mainWindow;
 let tray = null;
@@ -86,33 +87,44 @@ if (!gotTheLock) {
           },
         },
         {
-          label: "Always on Top",
-          type: "checkbox",
-          checked: alwaysOnTop,
-          click: (menuItem) => {
-            alwaysOnTop = menuItem.checked;
-            mainWindow.setAlwaysOnTop(alwaysOnTop);
-          },
-        },
-        {
-          label: "Enable Open at Startup",
-          type: "checkbox",
-          checked: isStartupEnabled,
-          click: (menuItem) => {
-            if (menuItem.checked) {
-              myAppLauncher.enable();
-              isStartupEnabled = true;
-            } else {
-              myAppLauncher.disable();
-              isStartupEnabled = false;
-            }
-          },
-        },
-        {
-          label: "Check for Updates",
-          click: () => {
-            checkForUpdates();
-          },
+          label: "More",
+          submenu: [  // Submenu that appears on hover
+            {
+              label: "Always on Top",
+              type: "checkbox",
+              checked: alwaysOnTop,
+              click: (menuItem) => {
+                alwaysOnTop = menuItem.checked;
+                mainWindow.setAlwaysOnTop(alwaysOnTop);
+              },
+            },
+            {
+              label: "Open at Startup",
+              type: "checkbox",
+              checked: isStartupEnabled,
+              click: (menuItem) => {
+                if (menuItem.checked) {
+                  myAppLauncher.enable();
+                  isStartupEnabled = true;
+                } else {
+                  myAppLauncher.disable();
+                  isStartupEnabled = false;
+                }
+              },
+            },
+            {
+              label: "Download NS Plugin",
+              click: () => {
+                shell.openExternal("https://example.com/ns-plugin-download"); // Replace with actual URL
+              },
+            },
+            {
+              label: "Check for Updates",
+              click: () => {
+                checkForUpdates();
+              },
+            },
+          ],
         },
         {
           label: "Quit",
@@ -122,8 +134,9 @@ if (!gotTheLock) {
           },
         },
       ]);
+      
 
-      tray.setToolTip("IHSVoice App");
+      tray.setToolTip("IHSVoice");
       tray.setContextMenu(contextMenu);
 
       tray.on("double-click", () => {
