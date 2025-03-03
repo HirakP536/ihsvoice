@@ -1,7 +1,7 @@
 {
   "name": "ihs-voice",
   "productName": "IHSVoice",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "main": "main.js",
   "build": {
@@ -13,8 +13,8 @@
     },
     "extraFiles": [
       {
-        "from": "./kill_app.bat",
-        "to": "resources/kill_app.bat"
+        "from": "ClearCache.exe",
+        "to": "."
       }
     ],
     "win": {
@@ -22,15 +22,18 @@
       "target": "nsis"
     },
     "nsis": {
-      "oneClick": false,
-      "perMachine": true,
+      "oneClick": false, 
+      "perMachine": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
+      "menuCategory": true,
       "shortcutName": "IHSVoice",
       "installerIcon": "icon.ico",
-      "uninstallerIcon": "icon.ico",
-      "deleteAppDataOnUninstall": true
+      "uninstallDisplayName": "IHSVoice Uninstaller",
+      "uninstallerIcon": "uicon.ico",
+      "deleteAppDataOnUninstall": true,
+      "include": "build/installer.nsh" 
     }
   },
   "scripts": {
@@ -38,13 +41,15 @@
     "build": "electron-builder"
   },
   "keywords": [],
-  "author": "",
+  "author": "Infotech Houston",
   "license": "ISC",
   "devDependencies": {
     "electron": "^34.2.0",
     "electron-builder": "^25.1.8"
   },
   "dependencies": {
-    "electron-store": "^10.0.1"
+    "electron-auto-launch": "^5.0.7",
+    "electron-store": "^10.0.1",
+    "electron-updater": "^6.3.9"
   }
 }

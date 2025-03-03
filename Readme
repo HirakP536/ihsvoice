@@ -1,1 +1,6 @@
 Voice App for windows
+
+For Update Exe.
+"oneClick": false, change to "oneClick": true,
+"allowToChangeInstallationDirectory": true, change to "allowToChangeInstallationDirectory": false,
+
